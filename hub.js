@@ -1,9 +1,19 @@
-const sortDate=async(sort)=>{
+const sortDate=async(sort,seemore)=>{
 const res = await fetch(`https://openapi.programming-hero.com/api/ai/tools/${sort}`)
 const mainData =await res.json()
 console.log(mainData.data)
 const hubs =mainData.data.tools; 
 console.log(hubs);
+// see 
+const see = document.getElementById('see');
+if (hubs.length > 4 && !seemore) {
+    see.classList.remove('hidden');  
+} else {
+    see.classList.add('hidden');  
+}
+if (!seemore) {
+    hubs = hubs.slice(0,4); 
+}
 
 hubs.forEach(hub => {
     const hubID =document.getElementById('hubID');
@@ -49,3 +59,9 @@ console.log(sort)
 sortDate(sort);
 }
   
+const seeMore=()=>{
+    sortDate(true);
+}
+
+
+
