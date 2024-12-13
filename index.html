@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.19/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-</head>
-
-<body>
+  <body  class="relative">
     <h2 class="text-center text-2xl font-extrabold my-4">AI Universe Hub</h2>
-
-    <section class="bg-pink-100 p-4 m-4 container mx-auto flex gap-3 justify-center items-center">
-        <input id="inputField" type="text" placeholder="Sort....."
-            class="input input-bordered w-full max-w-xs flex justify-center" />
-        
-        <div class="">
-            <button onclick="searchHandler()" class="btn btn-outline btn-secondary">Sort by Date</button>
-        </div>
-</section>
     
-    <section>
-        <div id="hubID" class="grid grid-cols-3 bg-white shadow-sm border border-slate-200 rounded-lg my-6">
-            
-          </div>
+    <section
+      class="bg-pink-100 p-4 m-4 container mx-auto flex gap-3 justify-center items-center"
+    >
+      <input
+        id="inputField"
+        type="text"
+        placeholder="Sort....."
+        class="input input-bordered w-full max-w-xs flex justify-center"
+      />
+
+      <div class="">
+        <button id="btn" class="btn btn-outline btn-secondary">
+          Sort by Date
+        </button>
+      </div>
+    </section>
+    <section id="body" class="grid grid-cols-3 bg-white shadow-sm border border-slate-200 rounded-lg my-6">
 
     </section>
-    <div class="my-8 hidden" id="see">
-        <button onclick="seeMore()" class="btn btn-outline btn-secondary">See More</button>
-    </div>
+    <section>
+      <div
+        id="hubID"
+        class="grid grid-cols-3 bg-white shadow-sm border border-slate-200 rounded-lg my-6"
+      ></div>
+    </section>
     <script src="hub.js"></script>
-</body>
-
+  </body>
 </html>
