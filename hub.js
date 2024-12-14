@@ -1,5 +1,5 @@
 const fetchApi = async(seeAll)=>{
-  const res =await fetch('https://openapi.programming-hero.com/api/ai/tools');
+  const res =await fetch("https://openapi.programming-hero.com/api/ai/tools");
    const result =await res.json()
    const mainData = result.data.tools;
     // console.log(mainData);
@@ -24,7 +24,7 @@ const display=(mainData,seeAll)=>{
   mainData.forEach(hub => {
     // console.log(hub);
    const singlediv = document.createElement('div');
-   singlediv.classList = `mx-auto p-5 sm:p-10 md:p-16 shadow-xl`;
+   singlediv.classList = `mx-auto p-5 sm:p-10 md:p-16 shadow-xl bg-purple-100`;
    singlediv.innerHTML=`
    <div class="rounded overflow-hidden flex flex-col mx-auto">
   
@@ -60,18 +60,20 @@ const display=(mainData,seeAll)=>{
   hubID.appendChild(singlediv);
   }); 
 }
-
 const btnClickForSort=async()=>{
-  const res =await fetch('https://openapi.programming-hero.com/api/ai/tools');
+  const res =await fetch("https://openapi.programming-hero.com/api/ai/tools");
    const result =await res.json();
    const mainData = result.data.tools;
     // console.log(mainData); 
     const sortedHub = mainData.sort((a, b) => new Date(a.published_in) - new Date(b.published_in));
     display(sortedHub);
-    // seeMoreClick(sortedHub);
-}
-const seeMoreClick=()=>{
-  fetchApi(true);
-  // display(sortPera);
-}
+    seeMoreClick(sortedHub);
+    }
+const seeMoreClick=(sortedALL)=>{
+  if (sortedALL.length>0) {
+    display(sortedALL,true);
+  } else {
+    fetchApi(true);
+  }
+ }
 fetchApi();
