@@ -1,9 +1,11 @@
+let dataToDisplay=[];
 const fetchApi = async(seeAll)=>{
-  const res =await fetch("https://openapi.programming-hero.com/api/ai/tools");
-   const result =await res.json()
-   const mainData = result.data.tools;
-    // console.log(mainData);
-    display(mainData,seeAll); 
+const res =await fetch("https://openapi.programming-hero.com/api/ai/tools");
+const result =await res.json();
+const mainData = result.data.tools;
+// console.log(await res.data);
+dataToDisplay = mainData;
+display(dataToDisplay,seeAll); 
     }
 const display=(mainData,seeAll)=>{
   const hubID= document.getElementById('hubID');
@@ -17,8 +19,8 @@ const display=(mainData,seeAll)=>{
   if (seeAll) {
     seeMore.classList.add('hidden') 
   }
-
-  if (!seeAll) {
+  
+if (!seeAll) {
     mainData = mainData.slice(0,6); 
   }
   mainData.forEach(hub => {
@@ -27,8 +29,7 @@ const display=(mainData,seeAll)=>{
    singlediv.classList = `mx-auto p-5 sm:p-10 md:p-16 shadow-xl bg-purple-100`;
    singlediv.innerHTML=`
    <div class="rounded overflow-hidden flex flex-col mx-auto">
-  
-          <a href="w-full">
+         <a href="w-full">
               <img class="w-full h-full" src="${hub.image}">
           </a>
           <div class="relative -mt-4 px-10 pt-5 pb-16 bg-white m-10 shadow-2xl shadow-pink-500">
@@ -66,10 +67,10 @@ const btnClickForSort=async()=>{
    const mainData = result.data.tools;
     // console.log(mainData); 
     const sortedHub = mainData.sort((a, b) => new Date(a.published_in) - new Date(b.published_in));
-    display(sortedHub);
-    
-    }
+    dataToDisplay= sortedHub;
+    display(dataToDisplay);
+     }
 const seeMoreClick=()=>{
-  fetchApi(true);
+  display(dataToDisplay,true);
   }
 fetchApi();
