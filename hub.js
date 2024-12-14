@@ -67,13 +67,9 @@ const btnClickForSort=async()=>{
     // console.log(mainData); 
     const sortedHub = mainData.sort((a, b) => new Date(a.published_in) - new Date(b.published_in));
     display(sortedHub);
-    seeMoreClick(sortedHub);
+    
     }
-const seeMoreClick=(sortedALL)=>{
-  if (sortedALL.length>0) {
-    display(sortedALL,true);
-  } else {
-    fetchApi(true);
+const seeMoreClick=()=>{
+  fetchApi(true);
   }
- }
 fetchApi();
